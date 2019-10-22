@@ -12,7 +12,6 @@
                     Name can be max 10 characters long.
                 </div>
             </div>
-
         </div>
         <div class="form-group">
             <label for="exampleInputPrenom">Prenom</label>
@@ -24,34 +23,33 @@
             <div *ngIf="userPrenom.hasError('maxlength')">
                 Prenom can be max 10 characters long.
             </div>
-
         </div>
         <div class="form-group" [ngClass]="{'is-invalid':formRegister.controls.email.invalid,
-        'is-valid':formRegister.controls.email.valid
-        }">
+            'is-valid':formRegister.controls.email.valid
+            }">
             <label>Email address</label>
             <input type="email" class="form-control" placeholder="Enter Email" formControlName="email" />
             <span>{{errorMail}}</span>
-            <!--&nbsp;&nbsp; -->
-            <!-- <div class="form-group" *ngIf="userEmail.errors" [ngClass]="'was-validated'">
+            <!-- &nbsp;&nbsp; -->
+            <div class="form-group" *ngIf="userEmail.errors" [ngClass]="'was-validated'">
                 <div *ngIf="userEmail.errors.pattern">
                     Mail invalid.
                 </div>
-                
-            </div> -->
+            </div>
             <div *ngIf="userEmail.errors?.email">
                 Email not valid.
             </div>
-
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" placeholder="Entrer Password" formControlName="password" />
         </div>
-        <!-- <div class="form-group">
-            <label for="exampleInputNom">Image</label>
-            <input type="file" class="form-control" placeholder="Enter votre image" formcontr>
-        </div> -->
+        <div class="form-group">
+            <label for="exampleInputImage">Image</label>
+            <input type="file" (change)="onFileSelect($event)" class="form-control"
+                placeholder="Enter votre image">
+            <span>{{errorImage}}</span>
+        </div>
     </form>
     <button type="button" (click)="onRegister()" class="btn btn-outline-primary btn-lg btn-block">Submit</button>
     <button type="button" class="btn btn-outline-danger btn-lg btn-block">Annuler</button>

@@ -7,7 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -21,8 +23,7 @@ import { HttpClient } from 'selenium-webdriver/http';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClient
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

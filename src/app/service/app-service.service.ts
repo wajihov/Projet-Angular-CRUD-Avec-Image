@@ -11,10 +11,16 @@ export class AppServiceService {
   constructor() { }
 
   registerLocalStorage(bloc: any) {
+
+
     let listRegister = JSON.parse(localStorage.getItem("staff"));
+
+    console.log("Service : ", bloc['image']);
+    
+
     if (listRegister == null) {
       listRegister = [];
-    }
+    }    
     listRegister.push(bloc);
     localStorage.setItem("staff", JSON.stringify(listRegister));
   }
