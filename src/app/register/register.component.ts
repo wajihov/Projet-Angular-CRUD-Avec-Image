@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
       console.log("Message d'erreur ", this.errorMail);
     }
     this.ngOnInit();
-    // this.errorMail = "";
+    
   }
 
   get userName() {
