@@ -44,12 +44,13 @@
             <input type="password" class="form-control" placeholder="Entrer Password" formControlName="password" />
         </div>
         <div class="form-group">
-            <label for="exampleInputImage">Image</label>
-            <input #myInput type="file" (change)="onFileSelect($event)" name="image" class="form-control"
+            <label for="exampleInputImage">Image</label>            
+            <input #myInput type="file" name="image" (change)="onFileSelect($event)" class="form-control"
                 placeholder="Enter votre image">
+            <img *ngIf="displayImage" class="rounded-circle" [src]="previewUrl" width="100" />
             <span>{{errorImage}}</span>
         </div>
     </form>
     <button type="button" (click)="onRegister()" class="btn btn-outline-primary btn-lg btn-block">Submit</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-block">Annuler</button>
+    <button type="button" (click)="onReset()" class="btn btn-outline-danger btn-lg btn-block">Annuler</button>
 </div>

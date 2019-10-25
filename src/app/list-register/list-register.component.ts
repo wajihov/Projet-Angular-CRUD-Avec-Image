@@ -22,7 +22,7 @@ export class ListRegisterComponent implements OnInit {
       this.img[i] = this.list[i].image;
       this.transform(this.img[i]);
     }
-    console.log("Les utilisateurs ", this.list);
+    //console.log("Les utilisateurs ", this.list);
   }
 
   //Call this method in the image source, it will sanitize it.

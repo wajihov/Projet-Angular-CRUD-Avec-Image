@@ -43,12 +43,15 @@
             <input type="password" class="form-control" formControlName="password" />
         </div>
         <div class="form-group">
-            <img class="rounded-circle" [src]="transform(img)" width="100">
+            <img class="rounded-circle" *ngIf="displayImg; else templateImage" [src]="transform(img)" width="100">
+            <ng-template #templateImage>
+                <img class="rounded-circle" [src]="previewUrl" width="100" />
+            </ng-template>
             <input #myInput type="file" (change)="onFileSelect($event)" name="image" class="form-control"
                 placeholder="Enter votre image">
             <span>{{errorImage}}</span>
         </div>
     </form>
     <button type="button" (click)="onUpdate()" class="btn btn-outline-primary btn-lg btn-block">Update</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-block">Annuler</button>
+    <button type="button" (click)="onReset()" class="btn btn-outline-danger btn-lg btn-block">Annuler</button>
 </div>

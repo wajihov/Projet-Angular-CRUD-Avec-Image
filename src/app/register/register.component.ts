@@ -16,6 +16,12 @@ export class RegisterComponent implements OnInit {
   errorImage: string = "";
   readerResult = new FileReader();
   pathImage: any = 'assets/image/P_inconnue.jpg';
+  fileData: File = null;
+  previewUrl: any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
+  displayImage: boolean;
+
 
   @ViewChild('myInput', { static: false }) myInputVariable: ElementRef;
 
@@ -31,13 +37,29 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       image: new FormControl('', [Validators.required])
     });
+    this.displayImage = false;
   }
 
+  preview() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
+      this.displayImage = true;
+    }
+  }
 
   onFileSelect(event) {
-    console.log("event : ", event);
+    //console.log("event : ", event);
     let file = event.target.files[0];
-    console.log('SIZE :', event.target.files[0].size);
+    //console.log('SIZE :', event.target.files[0].size);
+    this.fileData = <File>event.target.files[0];
+    this.preview();
     if (event.target.files[0].size > 200200) {
       this.errorImage = "Image loard";
       console.log(this.errorImage);
@@ -57,16 +79,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    console.log("l'utilisateur : ", this.formRegister);
+    //console.log("l'utilisateur : ", this.formRegister);
     let testEmail: Boolean = true;
     this.appService.getListRegister();
-    console.log("listRegister : ", this.appService.listRegister);
+    //console.log("listRegister : ", this.appService.listRegister);
     for (let i = 0; i < this.appService.listRegister.length; i++) {
       if (this.appService.listRegister[i].email == this.formRegister.value.email) {
         testEmail = false;
       }
     }
-    console.log("password : ", this.formRegister.controls.password);
+    // console.log("password : ", this.formRegister.controls.password);
     if (testEmail == true) {
       if (this.formRegister.controls.email.valid == true && this.formRegister.controls.password.value != "") {
         if (this.readerResult != null)
@@ -84,6 +106,10 @@ export class RegisterComponent implements OnInit {
     }
     this.ngOnInit();
     this.myInputVariable.nativeElement.value = "";
+  }
+
+  onReset() {
+    this.router.navigate(['list-register']);
   }
 
   get userName() {
