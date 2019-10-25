@@ -1,27 +1,40 @@
 import { Injectable } from '@angular/core';
-import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppServiceService {
 
-  utilisateur: any = []
+  utilisateur: any = [];
+  listRegister: any = [];
 
   constructor() { }
 
-  registerLocalStorage(bloc: any) {
-
-
-    let listRegister = JSON.parse(localStorage.getItem("staff"));
-
-    console.log("Service : ", bloc['image']);
-    
-
-    if (listRegister == null) {
-      listRegister = [];
-    }    
-    listRegister.push(bloc);
-    localStorage.setItem("staff", JSON.stringify(listRegister));
+  getListRegister() {
+    this.listRegister = JSON.parse(localStorage.getItem("staff"));
+    if (this.listRegister == null) {
+      this.listRegister = [];
+    }
   }
+  
+  setListRegister() {
+    localStorage.setItem("staff", JSON.stringify(this.listRegister));
+  }
+
+  registerLocalStorage(bloc: any) {
+    this.getListRegister();
+    this.listRegister.push(bloc);
+    this.setListRegister();
+  }
+
+  updateLocalStorage(bloc: any, index: number) {
+    this.getListRegister();
+    this.listRegister[index] = bloc;
+    this.setListRegister();
+  }
+
+  deleteLocalStorage(index: number) {
+    this.listRegister.splice(index, 1);
+  }
+
 }

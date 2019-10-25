@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="table table-striped w-auto">
+        <thead>
+            <tr class="font-weight-bold">
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>E-Mail</td>
+                <td>Photo</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of list; index as i">
+                <td>{{item.nom}}</td>
+                <td>{{item.prenom}}</td>
+                <td>{{item.email}}</td>
+                <!-- <div>
+                 <td *ngIf="img[i]!=null;then content else other_content">
+                     <img #content class="rounded-circle" [src]="transform(img[i])" width="100">
+                     <img #other_content class="rounded-circle" src="/assets/image/P_inconnue.jpg" alt="">
+                 </td>    
+                </div>-->
+                <td> <img class="rounded-circle" [src]="transform(img[i])" width="100"></td>
+                <td><a [routerLink]="['../modification',i]"><i class="fa fa-edit"></i></a></td>
+                <td><a routerLink="" (click)=removeItem(i)><i class="fa fa-remove"></i></a></td>
+            </tr>
+        </tbody>
+    </div>
+</div>

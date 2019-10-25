@@ -8,6 +8,9 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ListRegisterComponent } from './list-register/list-register.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ModifContactComponent } from './modif-contact/modif-contact.component';
 
 
 
@@ -15,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListRegisterComponent,
+    ModifContactComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

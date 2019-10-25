@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppServiceService } from '../service/app-service.service';
-import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,12 +15,14 @@ export class RegisterComponent implements OnInit {
   errorMail: string = "";
   errorImage: string = "";
   readerResult = new FileReader();
+  pathImage: any = 'assets/image/P_inconnue.jpg';
 
+  @ViewChild('myInput', { static: false }) myInputVariable: ElementRef;
 
-
-  constructor(private appService: AppServiceService, private http: HttpClient) { }
+  constructor(private appService: AppServiceService, private router: Router) { }
 
   ngOnInit() {
+    this.readerResult = null;
     this.formRegister = new FormGroup({
       nom: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
       prenom: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
@@ -32,15 +33,17 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+
   onFileSelect(event) {
     console.log("event : ", event);
     let file = event.target.files[0];
     console.log('SIZE :', event.target.files[0].size);
-    if (event.target.files[0].size > 51200) {
+    if (event.target.files[0].size > 200200) {
       this.errorImage = "Image loard";
       console.log(this.errorImage);
     }
     else {
+      this.errorImage = "";
       let reader = new FileReader();
       reader.readAsDataURL(file);
       this.readerResult = reader;
@@ -54,29 +57,25 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-
     console.log("l'utilisateur : ", this.formRegister);
-
-
     let testEmail: Boolean = true;
-    let listRegister = JSON.parse(localStorage.getItem("staff"));
-    console.log("listRegister : ", listRegister);
-    this.formRegister['image'] = this.readerResult.result;
-    console.log('NNNNNNNNNNNNN', this.readerResult.result);
-    console.log("BBBBBB : ", this.formRegister['image']);
-    if (listRegister == null) listRegister = [];
-
-    for (let i = 0; i < listRegister.length; i++) {
-      if (listRegister[i].email == this.formRegister.value.email) {
+    this.appService.getListRegister();
+    console.log("listRegister : ", this.appService.listRegister);
+    for (let i = 0; i < this.appService.listRegister.length; i++) {
+      if (this.appService.listRegister[i].email == this.formRegister.value.email) {
         testEmail = false;
       }
     }
-
+    console.log("password : ", this.formRegister.controls.password);
     if (testEmail == true) {
-      if (this.formRegister.controls.email.valid == true) {
-        this.formRegister.controls['image'].setValue({ 'image': this.readerResult.result })
+      if (this.formRegister.controls.email.valid == true && this.formRegister.controls.password.value != "") {
+        if (this.readerResult != null)
+          this.formRegister.controls['image'].setValue(this.readerResult.result);
+        else {
+          this.formRegister.controls['image'].setValue(this.pathImage);
+        }
         this.appService.registerLocalStorage(this.formRegister.value);
-        console.log('Aplication BHBHBHBHBHBHBHH : ', this.formRegister.value);
+        this.router.navigate(['list-register']);
       }
     }
     else {
@@ -84,7 +83,7 @@ export class RegisterComponent implements OnInit {
       console.log("Message d'erreur ", this.errorMail);
     }
     this.ngOnInit();
-    
+    this.myInputVariable.nativeElement.value = "";
   }
 
   get userName() {
@@ -97,5 +96,4 @@ export class RegisterComponent implements OnInit {
   get userEmail() {
     return this.formRegister.get('email');
   }
-
 }
