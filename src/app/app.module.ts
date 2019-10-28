@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListRegisterComponent } from './list-register/list-register.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ModifContactComponent } from './modif-contact/modif-contact.component';
+import { SearchPipe } from './pipe/search.pipe';
 
 
 
@@ -20,7 +21,8 @@ import { ModifContactComponent } from './modif-contact/modif-contact.component';
     NavbarComponent,
     RegisterComponent,
     ListRegisterComponent,
-    ModifContactComponent
+    ModifContactComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

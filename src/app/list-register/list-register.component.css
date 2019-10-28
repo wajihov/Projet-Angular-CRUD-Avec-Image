@@ -1,4 +1,21 @@
 .table {
     margin: auto;
-    width: 50% !important; 
- }
+    width: 50% !important;
+}
+
+.txtRechercher {
+    /* margin: 10px; */
+    height: 36px;
+    border-radius: 10px;
+    /* width: 300px; */
+    margin: auto;
+    width: 50% !important;
+}
+
+.rechercheGroup {
+    text-align: center;
+}
+
+.btn {
+    border-radius: 10px;
+}

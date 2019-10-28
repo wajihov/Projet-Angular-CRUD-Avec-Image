@@ -12,7 +12,7 @@ export class ListRegisterComponent implements OnInit {
 
   list: any = [];
   img: any = [];
-
+  
   constructor(private appService: AppServiceService, private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit() {
