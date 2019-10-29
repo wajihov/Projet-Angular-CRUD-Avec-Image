@@ -13,6 +13,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ModifContactComponent } from './modif-contact/modif-contact.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { LoginComponent } from './login/login.component';
+import { RegisterArticleComponent } from './Article/register-article/register-article.component';
+import { ListArticleComponent } from './Article/list-article/list-article.component';
+import { ModifArticleComponent } from './Article/modif-article/modif-article.component';
+import { ArticleComponent } from './article/article.component';
 
 
 
@@ -24,7 +28,11 @@ import { LoginComponent } from './login/login.component';
     ListRegisterComponent,
     ModifContactComponent,
     SearchPipe,
-    LoginComponent
+    LoginComponent,
+    RegisterArticleComponent,
+    ListArticleComponent,
+    ModifArticleComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
