@@ -12,6 +12,7 @@ import { ListRegisterComponent } from './list-register/list-register.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ModifContactComponent } from './modif-contact/modif-contact.component';
 import { SearchPipe } from './pipe/search.pipe';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -22,7 +23,8 @@ import { SearchPipe } from './pipe/search.pipe';
     RegisterComponent,
     ListRegisterComponent,
     ModifContactComponent,
-    SearchPipe
+    SearchPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
