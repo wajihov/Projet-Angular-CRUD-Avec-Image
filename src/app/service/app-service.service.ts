@@ -43,6 +43,10 @@ export class AppServiceService {
     return !!localStorage.getItem("authentification");
   }
 
+  loggedOut() {
+    localStorage.removeItem("authentification");
+  }
+
   addAuthentification(mail: string, pass: string) {
     this.getListRegister();
     let auth: any;
@@ -59,5 +63,4 @@ export class AppServiceService {
       localStorage.setItem("authentification", JSON.stringify(auth));
     }
   }
-
 }
