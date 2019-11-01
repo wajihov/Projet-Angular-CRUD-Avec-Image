@@ -13,9 +13,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ModifContactComponent } from './modif-contact/modif-contact.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { LoginComponent } from './login/login.component';
-import { RegisterArticleComponent } from './Article/register-article/register-article.component';
-import { ListArticleComponent } from './Article/list-article/list-article.component';
-import { ModifArticleComponent } from './Article/modif-article/modif-article.component';
+//import { RegisterArticleComponent } from './Article/register-article/register-article.component';
+//import { ListArticleComponent } from './Article/list-article/list-article.component';
+//import { ModifArticleComponent } from './Article/modif-article/modif-article.component';
 import { ArticleComponent } from './article/article.component';
 
 
@@ -29,9 +29,9 @@ import { ArticleComponent } from './article/article.component';
     ModifContactComponent,
     SearchPipe,
     LoginComponent,
-    RegisterArticleComponent,
-    ListArticleComponent,
-    ModifArticleComponent,
+    //RegisterArticleComponent,
+    //ListArticleComponent,
+    //ModifArticleComponent,
     ArticleComponent
   ],
   imports: [
@@ -41,7 +41,7 @@ import { ArticleComponent } from './article/article.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AngularFontAwesomeModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

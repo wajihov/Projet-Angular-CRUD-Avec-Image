@@ -12,18 +12,22 @@ import { ListArticleComponent } from './Article/list-article/list-article.compon
 
 
 const routes: Routes = [
-  { path: "", canActivate: [AuthGuardGuard], component: RegisterComponent },
-  { path: "register", canActivate: [AuthGuardGuard], component: RegisterComponent },
+  //{ path: "", canActivate: [AuthGuardGuard], component: RegisterComponent },
+  { path: "register", component: RegisterComponent },
   { path: "modification/:id", canActivate: [AuthGuardGuard], component: ModifContactComponent },
   { path: "list-register", canActivate: [AuthGuardGuard], component: ListRegisterComponent },
-  {
-    path: "article", component: ArticleComponent, canActivate: [AuthGuardGuard], children: [
-      { path: "", component: RegisterArticleComponent },
-      { path: "register-article", component: RegisterArticleComponent },
-      { path: "modif-article/:id", component: ModifArticleComponent },
-      { path: "list-article", component: ListArticleComponent }
-    ]
-  },  
+  { path: "article", loadChildren: "./Article/list-article/list-article.module#ListArticleModule" },
+  { path: "article", loadChildren: "./Article/register-article/register-article.module#RegisterArticleModule" },
+  { path: "article", loadChildren: "./Article/modif-article/modif-article.module#ModifArticleModule" },
+  //{ path: "listArticle", loadChildren: "./Article/list-article/list-article.module#ListArticleModule" },
+  // {
+  //   path: "article", component: ArticleComponent, canActivate: [AuthGuardGuard], children: [
+  //     { path: "", component: RegisterArticleComponent },
+  //     { path: "register-article", component: RegisterArticleComponent },
+  //     { path: "modif-article/:id", component: ModifArticleComponent },
+  //     { path: "list-article", component: ListArticleComponent }
+  //   ]
+  // },  
   { path: "login", component: LoginComponent }
 
 ];
