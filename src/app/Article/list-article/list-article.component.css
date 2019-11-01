@@ -3,7 +3,7 @@ html {
     width: 100%;
     overflow: hidden;
     scroll: none;
-    background-color: #2F5363;
+    /* background-color: #2F5363; */
 }
 
 @font-face {
@@ -62,6 +62,8 @@ body {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
+
+
 
 [class*="spider"] .eye:after {
     top: 6px;
