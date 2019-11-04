@@ -1,6 +1,10 @@
 :host {
     background-color: #919496c7;
-    size: 400px 400px;
+    size: 200px 200px;
     display: block;
     z-index: -1;
 }
+/* body{
+    background-image: url(./../../../assets/image/spiderweb-corner-right.png);
+    background-color: gray;
+} */

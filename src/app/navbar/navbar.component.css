@@ -1,0 +1,8 @@
+.styleNavbar {
+    background-color: #0000ff4d;
+    background-image: url(./../../assets/image/spiderweb-corner-right.png);
+}
+
+nav .navbar-nav li a, .navbar-light .navbar-brand, .btn {
+    color: #ffdc00 !important;
+}

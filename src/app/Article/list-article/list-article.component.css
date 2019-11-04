@@ -12,7 +12,7 @@ html {
 }
 
 :host {
-    background-color: green;
+    background-color: #2f5363;
     size: 200px 200px;
     display: block;
 }
@@ -62,8 +62,6 @@ body {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-
-
 
 [class*="spider"] .eye:after {
     top: 6px;
@@ -241,7 +239,7 @@ body {
 h1 {
     position: absolute;
     left: 6%;
-    bottom: 12%;
+    /* bottom: 8%; */
     font-family: 'Eater', cursive;
     font-size: 8.5vw;
     color: #111111;
@@ -250,28 +248,77 @@ h1 {
     animation: flicker 4s 0s infinite;
     right: 0;
     text-align: center;
+    background-color: #2f5363;
+    left: 0;
+    height: 562px;
+    width: auto;
+    z-index: -1;
+    bottom: -1%;
+    /* background-image: url("./../../../assets/image/spiderweb-corner-right.png");
+    background-repeat: no-repeat; */
+    padding-top: 420px;
+}
+
+.img1 {
+    float: right;
+    padding-top: 324px;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.img2{
+    opacity: 0.2;
+    z-index: -1;
+    height: auto;
+    width: auto;
 }
 
 .web-right {
+    /* background-image: url("./../../../assets/image/spiderweb-corner-right.png");
     position: absolute;
     height: 200px;
     width: auto;
     right: -10px;
     top: -10px;
+    z-index: -2;
+    opacity: 0.2;
+    float: right;
+    background-repeat: no-repeat;
+    padding-top: 750px; */
+
+
+    background-image: url("./../../../assets/image/spiderweb-corner-right.png");
+    position: absolute;
+    /* left: -214px; */
+    right: -392px;
+    top: -10px;
+    bottom: 12%;
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
     z-index: -1;
     opacity: 0.2;
+    background-repeat: no-repeat;
+    padding-top: 750px;
+
+
 }
 
 .web-left {
+    background-image: url("./../../../assets/image/spiderweb-corner-right.png");
     position: absolute;
-    left: -10px;
+    left: -378px;
     top: -10px;
+    bottom: 12%;
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
     z-index: -1;
     opacity: 0.2;
+    background-repeat: no-repeat;
+    padding-top: 750px;
 }
 
 @-moz-keyframes flicker {
